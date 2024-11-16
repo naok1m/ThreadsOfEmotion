@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bf425lp5jx38a"]
+
+[node name="npcinterativo_p2" type="CharacterBody2D"]

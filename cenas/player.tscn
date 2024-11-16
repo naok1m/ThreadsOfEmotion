@@ -1,0 +1,348 @@
+[gd_scene load_steps=29 format=3 uid="uid://brhqq8ryk58y6"]
+
+[ext_resource type="Script" path="res://Scripts/personagens/player.gd" id="1_c3173"]
+[ext_resource type="Texture2D" uid="uid://b13qs8beal10p" path="res://sprites/personagens/Adventurer/adventurer-Sheet.png" id="2_16h5f"]
+[ext_resource type="Texture2D" uid="uid://w0qmbayhbh20" path="res://sprites/SGQ_ui/Water Effect 2/Water Ball - Spritesheet/WaterBall - Startup and Infinite.png" id="3_xm3ms"]
+[ext_resource type="Texture2D" uid="uid://dk5g1apgmncoe" path="res://sprites/SGQ_ui/Water Effect 2/Water Blast - Spritesheet/Water Blast - End.png" id="4_3ri28"]
+[ext_resource type="Script" path="res://cenas/control.gd" id="4_b5wyq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2mh8e"]
+size = Vector2(17, 30.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jywe"]
+atlas = ExtResource("2_16h5f")
+region = Rect2(0, 0, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5megf"]
+atlas = ExtResource("2_16h5f")
+region = Rect2(50, 0, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djlx6"]
+atlas = ExtResource("2_16h5f")
+region = Rect2(100, 0, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxolw"]
+atlas = ExtResource("2_16h5f")
+region = Rect2(150, 0, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d24c8"]
+atlas = ExtResource("2_16h5f")
+region = Rect2(50, 111, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrq4r"]
+atlas = ExtResource("2_16h5f")
+region = Rect2(100, 111, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tbpt"]
+atlas = ExtResource("2_16h5f")
+region = Rect2(0, 74, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8glng"]
+atlas = ExtResource("2_16h5f")
+region = Rect2(50, 74, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqcu6"]
+atlas = ExtResource("2_16h5f")
+region = Rect2(100, 74, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thhiq"]
+atlas = ExtResource("2_16h5f")
+region = Rect2(150, 74, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_882it"]
+atlas = ExtResource("2_16h5f")
+region = Rect2(50, 37, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivngr"]
+atlas = ExtResource("2_16h5f")
+region = Rect2(100, 37, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tc3ou"]
+atlas = ExtResource("2_16h5f")
+region = Rect2(150, 37, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t803e"]
+atlas = ExtResource("2_16h5f")
+region = Rect2(200, 37, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0kes"]
+atlas = ExtResource("2_16h5f")
+region = Rect2(250, 37, 50, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_an4ry"]
+atlas = ExtResource("2_16h5f")
+region = Rect2(300, 37, 50, 37)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8a4la"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jywe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5megf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djlx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxolw")
+}],
+"loop": true,
+"name": &"P_idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d24c8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrq4r")
+}],
+"loop": true,
+"name": &"p_fall",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tbpt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8glng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqcu6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thhiq")
+}],
+"loop": true,
+"name": &"p_jump",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_882it")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivngr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tc3ou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t803e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0kes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_an4ry")
+}],
+"loop": true,
+"name": &"p_walk",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atkl0"]
+atlas = ExtResource("3_xm3ms")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pc0e"]
+atlas = ExtResource("3_xm3ms")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4obxc"]
+atlas = ExtResource("3_xm3ms")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83bfj"]
+atlas = ExtResource("3_xm3ms")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5ipbm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atkl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pc0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4obxc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83bfj")
+}],
+"loop": false,
+"name": &"agua",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+z_index = 1
+collision_mask = 4
+script = ExtResource("1_c3173")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visibility_layer = 18
+z_index = 1
+position = Vector2(0.5, 2.5)
+scale = Vector2(3.5, 3.5)
+shape = SubResource("RectangleShape2D_2mh8e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+position = Vector2(1, -5)
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_8a4la")
+animation = &"P_idle"
+frame_progress = 0.078883
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.114897, 0.114897, 0.114897, 1)
+position = Vector2(-8, -5)
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_8a4la")
+animation = &"P_idle"
+frame_progress = 0.078883
+
+[node name="poderes" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="poderes"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_b5wyq")
+
+[node name="ColorRect" type="ColorRect" parent="poderes/Control"]
+modulate = Color(1, 0.898039, 1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.254902)
+metadata/_edit_use_anchors_ = true
+
+[node name="aguaSprite" type="AnimatedSprite2D" parent="poderes"]
+position = Vector2(236, 37)
+rotation = 1.5708
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_5ipbm")
+animation = &"agua"
+frame_progress = 0.00749238
+
+[node name="agua2" type="Button" parent="poderes"]
+offset_left = 181.0
+offset_top = 471.0
+offset_right = 573.0
+offset_bottom = 548.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 50
+text = "AGUA"
+
+[node name="madeira" type="Button" parent="poderes"]
+offset_left = 623.0
+offset_top = 472.0
+offset_right = 1000.0
+offset_bottom = 549.0
+theme_override_font_sizes/font_size = 50
+text = "MADEIRA"
+
+[node name="fogo" type="Button" parent="poderes"]
+offset_left = 623.0
+offset_top = 560.0
+offset_right = 1001.0
+offset_bottom = 637.0
+theme_override_font_sizes/font_size = 50
+text = "FOGO
+"
+
+[node name="vento" type="Button" parent="poderes"]
+offset_left = 180.0
+offset_top = 556.0
+offset_right = 571.0
+offset_bottom = 633.0
+theme_override_font_sizes/font_size = 50
+text = "VENTO
+"
+
+[node name="hud" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Control" type="Control" parent="hud"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="hud/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="pause" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="pause"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.254902)
+
+[node name="Control" type="Control" parent="pause"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="pause/Control"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Button2" type="Button" parent="pause/Control"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Button3" type="Button" parent="pause/Control"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="inventario" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="WaterBlast-End" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-271, 68)
+texture = ExtResource("4_3ri28")
+
+[node name="aparecerbrux" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="pressed" from="poderes/agua2" to="poderes/Control" method="_on_agua_2_pressed"]
+[connection signal="pressed" from="poderes/madeira" to="poderes/Control" method="_on_madeira_pressed"]
+[connection signal="pressed" from="poderes/fogo" to="poderes/Control" method="_on_fogo_pressed"]
+[connection signal="pressed" from="poderes/vento" to="poderes/Control" method="_on_vento_pressed"]
+[connection signal="timeout" from="aparecerbrux" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_looptimer_timeout"]

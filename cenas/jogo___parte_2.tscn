@@ -1,0 +1,208 @@
+[gd_scene load_steps=18 format=3 uid="uid://b51pvnc144pxu"]
+
+[ext_resource type="Script" path="res://Scripts/partes do jogo/jogo___parte_2.gd" id="1_s0h3i"]
+[ext_resource type="Texture2D" uid="uid://gto48m1isvgb" path="res://sprites/Background layers/Layer_0000_9.png" id="2_yuqv0"]
+[ext_resource type="Texture2D" uid="uid://x5qr0kog6dyf" path="res://sprites/Background layers/Layer_0002_7.png" id="4_6hc2u"]
+[ext_resource type="Texture2D" uid="uid://c6tqh5dcvv2uf" path="res://sprites/Background layers/image.png" id="6_ahy4c"]
+[ext_resource type="Texture2D" uid="uid://d4aqnptx11u67" path="res://sprites/SGQ_ui/Keyboard Letters and Symbols.png" id="7_4faoa"]
+[ext_resource type="PackedScene" uid="uid://brhqq8ryk58y6" path="res://cenas/player.tscn" id="12_v0x4l"]
+[ext_resource type="PackedScene" uid="uid://kc42latyjyld" path="res://cenas/bruxa.tscn" id="15_25hfi"]
+[ext_resource type="Texture2D" uid="uid://cxlyol1lw0p5y" path="res://sprites/casas/HOUSE 1 - DAY.png" id="16_xy7jg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7gtry"]
+size = Vector2(6361.5, 108)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_we65g"]
+size = Vector2(43, 920)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hols8"]
+size = Vector2(90, 461.5)
+
+[sub_resource type="Animation" id="Animation_scxxw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -293)]
+}
+
+[sub_resource type="Animation" id="Animation_nsiby"]
+resource_name = "movi"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -293), Vector2(10, -293), Vector2(0, -293), Vector2(-10, -293), Vector2(0, -293)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h1mdw"]
+_data = {
+"RESET": SubResource("Animation_scxxw"),
+"movi": SubResource("Animation_nsiby")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t6phm"]
+size = Vector2(122.75, 115.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwlsv"]
+atlas = ExtResource("7_4faoa")
+region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_otgle"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwlsv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="jogo - parte_2" type="Node2D"]
+script = ExtResource("1_s0h3i")
+
+[node name="chão" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 11
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chão"]
+light_mask = 2
+visibility_layer = 29
+z_index = 11
+position = Vector2(3167.25, 603)
+shape = SubResource("RectangleShape2D_7gtry")
+
+[node name="Player" parent="." instance=ExtResource("12_v0x4l")]
+position = Vector2(817, 491)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = 50
+limit_bottom = 640
+
+[node name="Bruxa" parent="." instance=ExtResource("15_25hfi")]
+position = Vector2(2753, 472)
+
+[node name="parede" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 11
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="parede"]
+position = Vector2(11.5, 101)
+shape = SubResource("RectangleShape2D_we65g")
+
+[node name="prox cena" type="Area2D" parent="."]
+z_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="prox cena"]
+position = Vector2(5638, 326)
+shape = SubResource("RectangleShape2D_hols8")
+
+[node name="cenario" type="Node2D" parent="."]
+
+[node name="mato baixo" type="Node2D" parent="cenario"]
+z_index = 7
+position = Vector2(0, -293)
+scale = Vector2(1.5, 1.5)
+
+[node name="moita" type="Sprite2D" parent="cenario/mato baixo"]
+position = Vector2(695, 54)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_yuqv0")
+
+[node name="moita2" type="Sprite2D" parent="cenario/mato baixo"]
+z_index = 1
+position = Vector2(2085, 54)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_yuqv0")
+
+[node name="moita3" type="Sprite2D" parent="cenario/mato baixo"]
+z_index = 1
+position = Vector2(3477, 55)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_yuqv0")
+
+[node name="folha" type="Sprite2D" parent="cenario/mato baixo"]
+position = Vector2(459.333, 171.333)
+texture = ExtResource("4_6hc2u")
+
+[node name="folha2" type="Sprite2D" parent="cenario/mato baixo"]
+position = Vector2(1374, 164.667)
+texture = ExtResource("4_6hc2u")
+
+[node name="folha3" type="Sprite2D" parent="cenario/mato baixo"]
+position = Vector2(2294.67, 164.667)
+texture = ExtResource("4_6hc2u")
+
+[node name="folha4" type="Sprite2D" parent="cenario/mato baixo"]
+position = Vector2(3222, 164.667)
+texture = ExtResource("4_6hc2u")
+
+[node name="folha5" type="Sprite2D" parent="cenario/mato baixo"]
+position = Vector2(4142.67, 164.667)
+texture = ExtResource("4_6hc2u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="cenario/mato baixo"]
+libraries = {
+"": SubResource("AnimationLibrary_h1mdw")
+}
+
+[node name="Image" type="Sprite2D" parent="cenario"]
+position = Vector2(838.75, 304)
+scale = Vector2(1.50405, 1.5)
+texture = ExtResource("6_ahy4c")
+
+[node name="Image2" type="Sprite2D" parent="cenario"]
+position = Vector2(2496, 302)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_ahy4c")
+
+[node name="Image3" type="Sprite2D" parent="cenario"]
+position = Vector2(4161, 302)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_ahy4c")
+
+[node name="Image4" type="Sprite2D" parent="cenario"]
+position = Vector2(5806, 303)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_ahy4c")
+
+[node name="House1-Day" type="Sprite2D" parent="cenario"]
+modulate = Color(0.29219, 0.29219, 0.29219, 1)
+self_modulate = Color(1, 0.943472, 0.866805, 1)
+z_index = 1
+position = Vector2(2325, 339)
+scale = Vector2(4.3, 4.3)
+texture = ExtResource("16_xy7jg")
+
+[node name="casa" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="casa"]
+z_index = 2
+position = Vector2(2326, 485)
+shape = SubResource("RectangleShape2D_t6phm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="casa"]
+visible = false
+z_index = 1
+position = Vector2(2325, 398)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_otgle")
+
+[connection signal="body_entered" from="prox cena" to="." method="_on_prox_cena_body_entered"]
+[connection signal="body_entered" from="casa" to="." method="_on_area_2d_2_body_entered"]
+[connection signal="body_exited" from="casa" to="." method="_on_casa_body_exited"]

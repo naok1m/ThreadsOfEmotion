@@ -1,0 +1,170 @@
+[gd_scene load_steps=21 format=3 uid="uid://bvh5nnl1tvim1"]
+
+[ext_resource type="Texture2D" uid="uid://506t20pjsgi8" path="res://sprites/animais/Crow.png" id="1_hif66"]
+[ext_resource type="Script" path="res://Scripts/animais/crow.gd" id="1_krnpf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rholl"]
+size = Vector2(27, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yiic"]
+atlas = ExtResource("1_hif66")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_va6dn"]
+atlas = ExtResource("1_hif66")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ci2bf"]
+atlas = ExtResource("1_hif66")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lf3ij"]
+atlas = ExtResource("1_hif66")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k43vs"]
+atlas = ExtResource("1_hif66")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0wac"]
+atlas = ExtResource("1_hif66")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dd18u"]
+atlas = ExtResource("1_hif66")
+region = Rect2(96, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7amef"]
+atlas = ExtResource("1_hif66")
+region = Rect2(144, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8oee0"]
+atlas = ExtResource("1_hif66")
+region = Rect2(48, 144, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckixt"]
+atlas = ExtResource("1_hif66")
+region = Rect2(96, 144, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qjku7"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_3yiic")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_va6dn")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_ci2bf")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_lf3ij")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_k43vs")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_r0wac")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_dd18u")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_7amef")
+}],
+"loop": true,
+"name": &"bicar",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8oee0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckixt")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qn23h"]
+size = Vector2(20, 219)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ank1k"]
+atlas = ExtResource("1_hif66")
+region = Rect2(0, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s12hd"]
+atlas = ExtResource("1_hif66")
+region = Rect2(48, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alqe1"]
+atlas = ExtResource("1_hif66")
+region = Rect2(96, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p46uq"]
+atlas = ExtResource("1_hif66")
+region = Rect2(144, 96, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_symnc"]
+animations = [{
+"frames": [{
+"duration": 0.01,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ank1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s12hd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_alqe1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p46uq")
+}],
+"loop": true,
+"name": &"prefly",
+"speed": 5.0
+}]
+
+[node name="crow" type="CharacterBody2D" groups=["animais"]]
+z_index = 7
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_krnpf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 4
+visibility_layer = 2
+position = Vector2(-0.5, -1.5)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_rholl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_qjku7")
+animation = &"bicar"
+frame_progress = 0.955207
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-381, -53)
+shape = SubResource("RectangleShape2D_qn23h")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 7.0
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_symnc")
+animation = &"prefly"
+frame_progress = 0.442093
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_disappear_timeout"]
+[connection signal="animation_finished" from="AnimatedSprite2D2" to="." method="_on_animated_sprite_2d_2_animation_finished"]

@@ -1,0 +1,216 @@
+[gd_scene load_steps=19 format=3 uid="uid://b3m17l0stiegc"]
+
+[ext_resource type="Script" path="res://Scripts/Menu/menu.gd" id="1_4q84g"]
+[ext_resource type="Texture2D" uid="uid://b28klkys7s31i" path="res://sprites/1 Paper/livro.png" id="5_1q6dj"]
+[ext_resource type="Texture2D" uid="uid://c73170mfu6uw1" path="res://sprites/1 Paper/image-removebg-preview (8).png" id="25_mk4m3"]
+[ext_resource type="Script" path="res://Scripts/Menu/camera_2d.gd" id="25_yqbo1"]
+
+[sub_resource type="Animation" id="Animation_6a7xu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bl30e"]
+resource_name = "ZoomIn"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2.1, 2.1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_obmtq"]
+resource_name = "ZoomOut"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2.1, 2.1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hnuoh"]
+_data = {
+"RESET": SubResource("Animation_6a7xu"),
+"ZoomIn": SubResource("Animation_bl30e"),
+"ZoomOut": SubResource("Animation_obmtq")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mkjm"]
+atlas = ExtResource("25_mk4m3")
+region = Rect2(49, 246, 130, 246)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fl25l"]
+atlas = ExtResource("25_mk4m3")
+region = Rect2(309, 246, 130, 246)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0n1nh"]
+atlas = ExtResource("25_mk4m3")
+region = Rect2(351, 246, 130, 246)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sujit"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mkjm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fl25l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0n1nh")
+}, {
+"duration": 0.01,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vecw"]
+atlas = ExtResource("25_mk4m3")
+region = Rect2(321, 0, 80, 246)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uiasq"]
+atlas = ExtResource("25_mk4m3")
+region = Rect2(312, 0, 103, 246)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2bh4"]
+atlas = ExtResource("25_mk4m3")
+region = Rect2(316, 0, 131, 246)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2odvt"]
+atlas = ExtResource("25_mk4m3")
+region = Rect2(54, 0, 131, 246)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uw4qy"]
+animations = [{
+"frames": [{
+"duration": 0.01,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vecw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uiasq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2bh4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2odvt")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_r4ika"]
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_4q84g")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+position = Vector2(577, 323)
+scale = Vector2(2, 2)
+script = ExtResource("25_yqbo1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D"]
+libraries = {
+"": SubResource("AnimationLibrary_hnuoh")
+}
+
+[node name="Anim" type="AnimatedSprite2D" parent="."]
+z_index = 20
+position = Vector2(680, 325.215)
+scale = Vector2(1.52821, 1.49768)
+sprite_frames = SubResource("SpriteFrames_sujit")
+frame = 4
+frame_progress = 1.0
+
+[node name="Anim2" type="AnimatedSprite2D" parent="."]
+z_index = 20
+position = Vector2(472, 323)
+scale = Vector2(1.52821, 1.49768)
+sprite_frames = SubResource("SpriteFrames_uw4qy")
+frame = 5
+frame_progress = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 640.0
+offset_top = 261.0
+offset_right = 715.0
+offset_bottom = 397.0
+
+[node name="jogar" type="Button" parent="VBoxContainer"]
+z_index = 20
+texture_filter = 1
+layout_mode = 2
+text = "Jogar"
+icon = SubResource("ViewportTexture_r4ika")
+
+[node name="opções" type="Button" parent="VBoxContainer"]
+z_index = 20
+texture_filter = 1
+layout_mode = 2
+text = "Opções"
+icon = SubResource("ViewportTexture_r4ika")
+
+[node name="creditos" type="Button" parent="VBoxContainer"]
+z_index = 20
+texture_filter = 1
+layout_mode = 2
+text = "Creditos"
+icon = SubResource("ViewportTexture_r4ika")
+
+[node name="sair" type="Button" parent="VBoxContainer"]
+z_index = 20
+texture_filter = 1
+layout_mode = 2
+text = "Sair"
+icon = SubResource("ViewportTexture_r4ika")
+
+[node name="Image" type="Sprite2D" parent="."]
+position = Vector2(577.25, 323)
+scale = Vector2(1.34444, 1.36688)
+texture = ExtResource("5_1q6dj")
+
+[connection signal="animation_finished" from="Camera2D/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="Anim" to="." method="_on_anim_animation_finished"]
+[connection signal="animation_finished" from="Anim2" to="." method="_on_anim_2_animation_finished"]
+[connection signal="pressed" from="VBoxContainer/jogar" to="." method="_on_jogar_pressed"]
+[connection signal="pressed" from="VBoxContainer/opções" to="." method="_on_opções_pressed"]
+[connection signal="pressed" from="VBoxContainer/creditos" to="." method="_on_creditos_pressed"]
+[connection signal="pressed" from="VBoxContainer/sair" to="." method="_on_sair_pressed"]
